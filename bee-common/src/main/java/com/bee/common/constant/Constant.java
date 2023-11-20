@@ -43,9 +43,24 @@ public interface Constant {
     String CREATE_DATE = "create_date";
 
     /**
+     * 数据权限过滤
+     */
+    String SQL_FILTER = "sqlFilter";
+
+    /**
+     * 当前页码
+     */
+    String PAGE = "page";
+
+    /**
+     * 每页显示记录数
+     */
+    String LIMIT = "limit";
+
+    /**
      * 排序字段
      */
-    String ORDER_FIELD = "order_field";
+    String ORDER_FIELD = "orderField";
 
     /**
      * 排序方式
