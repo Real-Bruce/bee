@@ -1,4 +1,4 @@
-package com.bee.common.util;
+package com.bee.common.util.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

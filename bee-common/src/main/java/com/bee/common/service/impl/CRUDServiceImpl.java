@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import com.bee.common.page.PageData;
 import com.bee.common.service.CRUDService;
-import com.bee.common.util.ConvertUtils;
+import com.bee.common.util.common.ConvertUtils;
 import org.springframework.beans.BeanUtils;
 
 import java.util.Arrays;
