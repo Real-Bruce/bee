@@ -1,10 +1,12 @@
 package com.bee.common.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.enums.SqlMethod;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
@@ -12,13 +14,16 @@ import com.bee.common.constant.Constant;
 import com.bee.common.page.PageData;
 import com.bee.common.service.BaseService;
 import com.bee.common.util.ConvertUtils;
+import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.*;
+import java.util.function.BiConsumer;
 
 /**
  * @author Bruce
@@ -127,6 +132,70 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> implements Bas
         return SqlHelper.getSqlStatement(this.currentMapperClass(), sqlMethod);
     }
 
+    @Override
+    public boolean insert(T entity) {
+        return BaseServiceImpl.retBool(baseDao.insert(entity));
+    }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean insertBatch(Collection<T> entityList) {
+        return insertBatch(entityList, 100);
+    }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean insertBatch(Collection<T> entityList, int batchSize) {
+        String sqlStatement = getSqlStatement(SqlMethod.INSERT_ONE);
+        return executeBath(entityList, batchSize, (sqlSession, entity) -> sqlSession.insert(sqlStatement, entity));
+    }
+
+    @Override
+    public boolean updateById(T entity) {
+        return BaseServiceImpl.retBool(baseDao.updateById(entity));
+    }
+
+    @Override
+    public boolean update(T entity, Wrapper<T> updateWrapper) {
+        return  BaseServiceImpl.retBool(baseDao.update(entity, updateWrapper));
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateBatchById(Collection<T> entityList) {
+        return updateBatchById(entityList, 30);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateBatchById(Collection<T> entityList, int batchSize) {
+        String sqlStatement = getSqlStatement(SqlMethod.UPDATE_BY_ID);
+        return executeBath(entityList, batchSize, (sqlSession, entity) -> {
+            MapperMethod.ParamMap<T> param = new MapperMethod.ParamMap<>();
+            param.put(Constants.ENTITY, entity);
+            sqlSession.update(sqlStatement, param);
+        });
+    }
+
+    @Override
+    public T selectById(Serializable id) {
+        return baseDao.selectById(id);
+    }
+
+    @Override
+    public boolean deleteById(Serializable id) {
+        return SqlHelper.retBool(baseDao.deleteById(id));
+    }
+
+    @Override
+    public boolean deleteBachIds(Collection<? extends Serializable> idList) {
+        return SqlHelper.retBool(baseDao.deleteBatchIds(idList));
+    }
+
+    /**
+     * 执行批量操作
+     */
+    protected <E> boolean executeBath(Collection<E> list, int batchSize, BiConsumer<SqlSession, E> consumer) {
+        return SqlHelper.executeBatch(this.currentMapperClass(), this.log, list, batchSize, consumer);
+    }
 }
