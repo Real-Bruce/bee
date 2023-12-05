@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
 import com.bee.common.constant.Constant;
 import com.bee.common.page.PageData;
 import com.bee.common.service.BaseService;
-import com.bee.common.util.ConvertUtils;
+import com.bee.common.util.common.ConvertUtils;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
