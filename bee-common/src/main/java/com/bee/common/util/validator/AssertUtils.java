@@ -14,12 +14,12 @@ import java.util.Objects;
 /**
  * @author Bruce
  * @create 2023/12/05
- * @description 断言工具类
+ * @description 校验工具类
  */
 public abstract class AssertUtils {
 
     /**
-     * 不为空断言
+     * String校验
      * @param str
      * @param params
      */
@@ -38,7 +38,7 @@ public abstract class AssertUtils {
     }
 
     /**
-     * null断言
+     * Object校验
      * @param object
      * @param params
      */
@@ -57,7 +57,7 @@ public abstract class AssertUtils {
     }
 
     /**
-     * 数组不为空断言
+     * Array校验
      * @param array
      * @param params
      */
@@ -76,7 +76,7 @@ public abstract class AssertUtils {
     }
 
     /**
-     * 集合不为空断言
+     * List校验
      * @param list
      * @param params
      */
@@ -94,6 +94,11 @@ public abstract class AssertUtils {
         }
     }
 
+    /**
+     * Map校验
+     * @param map
+     * @param params
+     */
     public static void isMapEmpty(Map map, String... params) {
         isMapEmpty(map, ErrorCode.NOT_NULL, params);
     }
