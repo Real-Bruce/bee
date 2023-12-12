@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @description
  */
 @ApiModel(value = "响应")
-public class Result<T> implements Serializable {
+public class ResultVo<T> implements Serializable {
     private static final long serialVersionUID = 3226396365575268574L;
 
     /**
@@ -34,7 +34,7 @@ public class Result<T> implements Serializable {
     @ApiModelProperty(value = "响应数据")
     private T data;
 
-    public Result<T> ok(T data) {
+    public ResultVo<T> ok(T data) {
         this.setData(data);
         return this;
     }
@@ -43,22 +43,22 @@ public class Result<T> implements Serializable {
         return code == 0;
     }
 
-    public Result<T> error() {
+    public ResultVo<T> error() {
         this.code = ErrorCode.INTERNAL_SERVER_ERROR;
         this.msg = MessageUtils.getMessage(code);
         return this;
     }
-    public Result<T> error(int code) {
+    public ResultVo<T> error(int code) {
         this.code = code;
         this.msg = MessageUtils.getMessage(code);
         return this;
     }
-    public Result<T> error(int code, String msg) {
+    public ResultVo<T> error(int code, String msg) {
         this.code = code;
         this.msg = msg;
         return this;
     }
-    public Result<T> error(String msg) {
+    public ResultVo<T> error(String msg) {
         this.code = ErrorCode.INTERNAL_SERVER_ERROR;
         this.msg = msg;
         return this;

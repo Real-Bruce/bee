@@ -1,4 +1,4 @@
-package com.bee.common.dao;
+package com.bee.common.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -7,5 +7,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @create 2023/11/20
  * @description
  */
-public interface BaseDao<T> extends BaseMapper<T> {
+public interface BMapper<T> extends BaseMapper<T> {
 }
