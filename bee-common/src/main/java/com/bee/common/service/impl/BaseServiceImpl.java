@@ -33,7 +33,7 @@ import java.util.function.BiConsumer;
 public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<T> {
 
     @Autowired
-    protected M baseDao;
+    protected M baseMapper;
 
     protected Log log = LogFactory.getLog(getClass());
 
@@ -134,7 +134,7 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> implements Bas
 
     @Override
     public boolean insert(T entity) {
-        return BaseServiceImpl.retBool(baseDao.insert(entity));
+        return BaseServiceImpl.retBool(baseMapper.insert(entity));
     }
 
     @Override
@@ -152,12 +152,12 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> implements Bas
 
     @Override
     public boolean updateById(T entity) {
-        return BaseServiceImpl.retBool(baseDao.updateById(entity));
+        return BaseServiceImpl.retBool(baseMapper.updateById(entity));
     }
 
     @Override
     public boolean update(T entity, Wrapper<T> updateWrapper) {
-        return  BaseServiceImpl.retBool(baseDao.update(entity, updateWrapper));
+        return  BaseServiceImpl.retBool(baseMapper.update(entity, updateWrapper));
     }
 
     @Override
@@ -179,17 +179,17 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> implements Bas
 
     @Override
     public T selectById(Serializable id) {
-        return baseDao.selectById(id);
+        return baseMapper.selectById(id);
     }
 
     @Override
     public boolean deleteById(Serializable id) {
-        return SqlHelper.retBool(baseDao.deleteById(id));
+        return SqlHelper.retBool(baseMapper.deleteById(id));
     }
 
     @Override
     public boolean deleteBachIds(Collection<? extends Serializable> idList) {
-        return SqlHelper.retBool(baseDao.deleteBatchIds(idList));
+        return SqlHelper.retBool(baseMapper.deleteBatchIds(idList));
     }
 
     /**

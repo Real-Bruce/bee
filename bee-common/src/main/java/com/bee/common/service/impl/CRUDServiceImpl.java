@@ -29,7 +29,7 @@ public abstract class CRUDServiceImpl<M extends BaseMapper<T>, T, D> extends Bas
 
     @Override
     public PageData<D> page(Map<String, Object> params) {
-        IPage<T> page = baseDao.selectPage(
+        IPage<T> page = baseMapper.selectPage(
                 getPage(params, null, false),
                 getWrapper(params)
         );
@@ -38,13 +38,13 @@ public abstract class CRUDServiceImpl<M extends BaseMapper<T>, T, D> extends Bas
 
     @Override
     public List<D> list(Map<String, Object> params) {
-        List<T> entityList = baseDao.selectList(getWrapper(params));
+        List<T> entityList = baseMapper.selectList(getWrapper(params));
         return ConvertUtils.sourceToTarget(entityList, currentDtoClass());
     }
 
     @Override
     public D getById(Long id) {
-        T entity = baseDao.selectById(id);
+        T entity = baseMapper.selectById(id);
         return ConvertUtils.sourceToTarget(entity, currentDtoClass());
     }
 
@@ -65,7 +65,7 @@ public abstract class CRUDServiceImpl<M extends BaseMapper<T>, T, D> extends Bas
 
     @Override
     public void delete(Long[] ids) {
-        baseDao.deleteBatchIds(Arrays.asList(ids));
+        baseMapper.deleteBatchIds(Arrays.asList(ids));
     }
 
 }
