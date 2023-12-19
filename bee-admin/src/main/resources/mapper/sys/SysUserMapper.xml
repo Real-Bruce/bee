@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bee.modules.sys.mapper.SysUserMapper">
+    <update id="updatePassword">
+        update sys_user set password = #{newPassword} where id = #{id}
+    </update>
+
+    <select id="listByParams" resultType="com.bee.modules.sys.entity.SysUser">
+        select t1.*, (select t2.name from sys_dept t2 where t2.id = t1.dept_id) as deptName
+        from sys_user t1
+        where t1.super_admin = 0
+        <if test="userName != null and userName.trim() != ''">
+            and t1.username like #{userName}
+        </if>
+        <if test="deptId != null and deptId.trim() != ''">
+            and t1.dept_id = #{deptId}
+        </if>
+        <if test="gender != null and gender.trim() != ''">
+            and t1.gender = #{gender}
+        </if>
+        <if test="deptIdList != null">
+            and t1.dept_id in
+            <foreach collection="deptIdList" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="getById" resultType="com.bee.modules.sys.entity.SysUser">
+        select t1.*, (select t2.name from sys_dept t2 where t2.id = t1.dept_id) as deptName
+        from sys_user t1
+        where t1.id = #{id}
+    </select>
+
+    <select id="getByUsername" resultType="com.bee.modules.sys.entity.SysUser">
+        select * from sys_user where username = #{username};
+    </select>
+    
+    <select id="getCountByDeptId" resultType="java.lang.Integer">
+        select count(*) from sys_user where dept_id = #{deptId};
+    </select>
+
+    <select id="listUserIdsByDeptId" resultType="java.lang.Long">
+        select id from sys_user
+        where dept_id in
+        <foreach collection="deptIdList" item="deptId" open="(" separator="," close=")">
+            #{deptId}
+        </foreach>
+    </select>
+</mapper>

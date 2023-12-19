@@ -6,6 +6,7 @@ import com.bee.common.util.common.MessageUtils;
 import com.bee.modules.security.entity.SysUserToken;
 import com.bee.modules.security.service.ShiroService;
 import com.bee.modules.security.user.UserDetail;
+import com.bee.modules.sys.entity.SysUser;
 import lombok.AllArgsConstructor;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -67,7 +68,7 @@ public class Oauth2Realm extends AuthorizingRealm {
         }
 
         // 查询用户信息
-        SysUserToken user = shiroService.getUser(userToken.getUserId());
+        SysUser user = shiroService.getUser(userToken.getUserId());
 
         UserDetail userDetail = ConvertUtils.sourceToTarget(user, UserDetail.class);
 

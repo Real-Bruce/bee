@@ -2,6 +2,7 @@ package com.bee.modules.security.service;
 
 import com.bee.modules.security.entity.SysUserToken;
 import com.bee.modules.security.user.UserDetail;
+import com.bee.modules.sys.entity.SysUser;
 
 import java.util.List;
 import java.util.Set;
@@ -23,7 +24,7 @@ public interface ShiroService {
     /**
      * 根据userId，获取用户
      */
-    SysUserToken getUser(Long userId);
+    SysUser getUser(Long userId);
 
     /**
      * 获取用户的部门权限
