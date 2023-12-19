@@ -8,6 +8,7 @@ import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,7 +36,7 @@ public class ShiroConfig {
 
     @Bean("securityManager")
     public SecurityManager securityManager(Oauth2Realm oauth2Realm, SessionManager sessionManager) {
-        DefaultSecurityManager securityManager = new DefaultSecurityManager();
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(oauth2Realm);
         securityManager.setSessionManager(sessionManager);
         securityManager.setRememberMeManager(null);
@@ -66,7 +67,7 @@ public class ShiroConfig {
         return new LifecycleBeanPostProcessor();
     }
 
-    @Bean("authorizationAttributeSourceAdvisor")
+    @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor (SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor sourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         sourceAdvisor.setSecurityManager(securityManager);

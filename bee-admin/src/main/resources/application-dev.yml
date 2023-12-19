@@ -21,3 +21,4 @@ spring:
 logging:
   level:
     root: debug
+    org.springframework.boot.autoconfigure: error

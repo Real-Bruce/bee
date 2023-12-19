@@ -2,9 +2,8 @@ package com.bee.oauth2;
 
 import cn.hutool.core.util.StrUtil;
 import com.bee.common.constant.Constant;
-import com.bee.common.exception.BeeException;
 import com.bee.common.exception.ErrorCode;
-import com.bee.common.util.ResultVo;
+import com.bee.common.util.ResultVO;
 import com.bee.common.util.common.HttpContextUtils;
 import com.bee.common.util.common.JsonUtils;
 import org.apache.http.HttpStatus;
@@ -53,7 +52,7 @@ public class Oauth2Filter extends AuthenticatingFilter {
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Origin", HttpContextUtils.getOrigin());
 
-            String json = JsonUtils.toJsonString(new ResultVo<>().error(ErrorCode.UNAUTHORIZED));
+            String json = JsonUtils.toJsonString(new ResultVO<>().error(ErrorCode.UNAUTHORIZED));
             httpResponse.getWriter().print(json);
             return false;
         }
@@ -70,7 +69,7 @@ public class Oauth2Filter extends AuthenticatingFilter {
 
         try {
             Throwable throwable = Objects.isNull(e.getCause()) ? e : e.getCause();
-            ResultVo<Object> error = new ResultVo<>().error(HttpStatus.SC_UNAUTHORIZED, throwable.getMessage());
+            ResultVO<Object> error = new ResultVO<>().error(HttpStatus.SC_UNAUTHORIZED, throwable.getMessage());
             String json = JsonUtils.toJsonString(error);
             httpResponse.getWriter().print(json);
         } catch (IOException ex) {

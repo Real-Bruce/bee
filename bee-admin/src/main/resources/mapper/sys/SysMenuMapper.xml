@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bee.modules.sys.mapper.SysMenuMapper">
+
+    <select id="getById" resultType="com.bee.modules.sys.entity.SysMenu">
+        select t1.*, (select t2.name from sys_menu t2 where t2.id = t1.pid) as parentName
+        from sys_menu t1
+        where t1.id = #{id}
+    </select>
+
+    <select id="listMenus" resultType="com.bee.modules.sys.entity.SysMenu">
+        select t1.id, t1.pid, t1.name, t1.url, t1.permissions, t1.menu_type, t1.icon, t1.sort, t1.creator,
+        t1.create_date, t1.updater, t1.update_date
+        from sys_menu t1
+        <where>
+            <if test="menuType != null">
+                t1.menu_type = #{menuType}
+            </if>
+        </where>
+        order by t1.sort asc
+    </select>
+
+    <select id="listMenusByUserId" resultType="com.bee.modules.sys.entity.SysMenu">
+        select t3.id, t3.pid, t3.name, t3.url, t3.permissions, t3.menu_type, t3.icon, t3.sort, t3.creator,
+        t3.create_date, t3.updater, t3.update_date
+        from sys_role_user t1
+        left join sys_role_menu t2 on t1.role_id = t2.role_id
+        left join sys_menu t3 on t2.menu_id = t3.id
+        where 1=1 and t1.user_id = #{userId}
+        <if test="menuType != null">
+            and t3.menu_type = #{menuType}
+        </if>
+        order by t3.sort asc
+    </select>
+
+    <select id="listUserPermissions" resultType="java.lang.String">
+        select t3.permissions
+        from sys_role_user t1
+        left join sys_role_menu t2 on t1.role_id = t2.role_id
+        left join sys_menu t3 on t2.menu_id = t3.id
+        where t1.user_id = #{userId}
+        order by t3.sort asc
+    </select>
+
+    <select id="listPermissions" resultType="java.lang.String">
+        select permissions
+        from sys_menu;
+    </select>
+
+    <select id="listByPid" resultType="com.bee.modules.sys.entity.SysMenu">
+        select *
+        from sys_menu
+        where pid = #{pid};
+    </select>
+</mapper>
