@@ -158,6 +158,11 @@ public class SysUser implements Serializable {
     */
     @TableField("update_date")
     private Date updateDate;
+    /**
+     * 部门名称
+     */
+    @TableField(exist=false)
+    private String deptName;
 
 }
 
