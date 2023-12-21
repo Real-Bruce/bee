@@ -4,11 +4,9 @@ import com.bee.common.mapper.BMapper;
 import com.bee.modules.sys.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Bruce
@@ -30,7 +28,7 @@ public interface SysUserMapper extends BMapper<SysUser> {
      * 根据部门ID查询用户数量
      * @param deptId 部门ID
      */
-    int getCountByDeptId(@Param("deptId") Long deptId);
+    int countByDeptId(@Param("deptId") Long deptId);
 
     /**
      * 根据部门ID获取UserID
