@@ -99,7 +99,7 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDeptMapper, SysDept> 
         }
 
         // 判断部门下面是否有用户
-        int count = sysUserMapper.getCountByDeptId(id);
+        int count = sysUserMapper.countByDeptId(id);
         if (count > 0) {
             throw new BeeException(ErrorCode.DEPT_SUB_DELETE_ERROR);
         }

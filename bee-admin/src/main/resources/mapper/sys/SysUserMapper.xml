@@ -36,7 +36,7 @@
         select * from sys_user where username = #{username};
     </select>
     
-    <select id="getCountByDeptId" resultType="java.lang.Integer">
+    <select id="countByDeptId" resultType="java.lang.Integer">
         select count(*) from sys_user where dept_id = #{deptId};
     </select>
 
