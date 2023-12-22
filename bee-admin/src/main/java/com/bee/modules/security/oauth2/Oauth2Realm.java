@@ -1,4 +1,4 @@
-package com.bee.oauth2;
+package com.bee.modules.security.oauth2;
 
 import com.bee.common.exception.ErrorCode;
 import com.bee.common.util.common.ConvertUtils;

@@ -6,7 +6,7 @@ import com.bee.common.util.ResultVO;
 import com.bee.modules.security.entity.SysUserToken;
 import com.bee.modules.security.mapper.SysUserTokenMapper;
 import com.bee.modules.security.service.SysUserTokenService;
-import com.bee.oauth2.TokenGenerator;
+import com.bee.modules.security.oauth2.TokenGenerator;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

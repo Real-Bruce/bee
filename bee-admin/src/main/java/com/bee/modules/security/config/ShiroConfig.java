@@ -1,8 +1,7 @@
 package com.bee.modules.security.config;
 
-import com.bee.oauth2.Oauth2Filter;
-import com.bee.oauth2.Oauth2Realm;
-import org.apache.shiro.mgt.DefaultSecurityManager;
+import com.bee.modules.security.oauth2.Oauth2Filter;
+import com.bee.modules.security.oauth2.Oauth2Realm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;

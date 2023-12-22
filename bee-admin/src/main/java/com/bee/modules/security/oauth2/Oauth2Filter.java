@@ -1,4 +1,4 @@
-package com.bee.oauth2;
+package com.bee.modules.security.oauth2;
 
 import cn.hutool.core.util.StrUtil;
 import com.bee.common.constant.Constant;

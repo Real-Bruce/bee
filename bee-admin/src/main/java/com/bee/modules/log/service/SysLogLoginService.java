@@ -19,6 +19,6 @@ public interface SysLogLoginService extends BaseService<SysLogLogin> {
     PageData<SysLogLoginDTO> page (Map<String, Object> params);
 
     List<SysLogLoginDTO> list (Map<String, Object> params);
-    void save(SysLogLoginDTO dto);
+    void save(SysLogLogin logLogin);
 
 }
