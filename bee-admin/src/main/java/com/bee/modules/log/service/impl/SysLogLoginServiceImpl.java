@@ -40,8 +40,8 @@ public class SysLogLoginServiceImpl extends BaseServiceImpl<SysLogLoginMapper, S
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysLogLoginDTO dto) {
-        insert(ConvertUtils.sourceToTarget(dto, SysLogLogin.class));
+    public void save(SysLogLogin logLogin) {
+        insert(logLogin);
     }
 
     private QueryWrapper<SysLogLogin> getWrapper(Map<String, Object> params) {
