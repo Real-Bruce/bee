@@ -25,5 +25,5 @@ public @interface DataFilter {
     /**
      * 部门ID
      */
-    String departmentId() default "";
+    String deptId() default "";
 }
