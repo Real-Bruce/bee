@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/sys/log/error")
-@Api("异常日志")
+@Api(tags = "异常日志")
 @AllArgsConstructor
 public class SysLogErrorController {
     private final SysLogErrorService sysLogErrorService;

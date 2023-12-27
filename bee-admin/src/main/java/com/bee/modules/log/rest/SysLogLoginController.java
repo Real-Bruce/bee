@@ -30,7 +30,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sys/log/login")
 @AllArgsConstructor
-@Api("登录日志")
+@Api(tags = "登录日志")
 public class SysLogLoginController {
     private final SysLogLoginService sysLogLoginService;
 
