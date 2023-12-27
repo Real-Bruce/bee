@@ -10,7 +10,6 @@ import com.bee.modules.security.user.SecurityUser;
 import com.bee.modules.security.user.UserDetail;
 import com.bee.modules.sys.dict.SuperAdminEnum;
 import com.bee.modules.sys.dto.SysDeptDTO;
-import com.bee.modules.sys.dto.SysUserDTO;
 import com.bee.modules.sys.entity.SysDept;
 import com.bee.modules.sys.mapper.SysDeptMapper;
 import com.bee.modules.sys.mapper.SysUserMapper;
@@ -50,19 +49,19 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDeptMapper, SysDept> 
     }
 
     @Override
-    public SysUserDTO getById(Long id) {
+    public SysDeptDTO getById(Long id) {
         // super admin deptId is null
         if (Objects.isNull(id)) {
             return null;
         }
 
         SysDept sysDept = baseMapper.getById(id);
-        return ConvertUtils.sourceToTarget(sysDept, SysUserDTO.class);
+        return ConvertUtils.sourceToTarget(sysDept, SysDeptDTO.class);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysUserDTO dto) {
+    public void save(SysDeptDTO dto) {
         SysDept sysDept = ConvertUtils.sourceToTarget(dto, SysDept.class);
 
         sysDept.setPids(getPidList(sysDept.getPid()));
@@ -71,7 +70,7 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDeptMapper, SysDept> 
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysUserDTO dto) {
+    public void update(SysDeptDTO dto) {
         SysDept sysDept = ConvertUtils.sourceToTarget(dto, SysDept.class);
 
         if (sysDept.getId().equals(sysDept.getPid())) {

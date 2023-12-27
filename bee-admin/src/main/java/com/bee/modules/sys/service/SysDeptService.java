@@ -2,7 +2,6 @@ package com.bee.modules.sys.service;
 
 import com.bee.common.service.BaseService;
 import com.bee.modules.sys.dto.SysDeptDTO;
-import com.bee.modules.sys.dto.SysUserDTO;
 import com.bee.modules.sys.entity.SysDept;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +18,11 @@ public interface SysDeptService extends BaseService<SysDept> {
 
     List<SysDeptDTO> list(Map<String, Object> params);
 
-    SysUserDTO getById(Long id);
+    SysDeptDTO getById(Long id);
 
-    void save(SysUserDTO dto);
+    void save(SysDeptDTO dto);
 
-    void update(SysUserDTO dto);
+    void update(SysDeptDTO dto);
 
     void delete(Long id);
 
