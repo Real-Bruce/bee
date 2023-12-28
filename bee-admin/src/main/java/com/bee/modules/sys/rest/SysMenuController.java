@@ -30,7 +30,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/sys/menu")
 @AllArgsConstructor
-@Api("菜单管理")
+@Api(tags = "资源管理")
 public class SysMenuController {
     private final SysMenuService sysMenuService;
     private final ShiroService shiroService;
