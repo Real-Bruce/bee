@@ -8,7 +8,7 @@
         where t1.id = #{id}
     </select>
 
-    <select id="listMenus" resultType="com.bee.modules.sys.entity.SysMenu">
+    <select id="listByMenuType" resultType="com.bee.modules.sys.entity.SysMenu">
         select t1.id, t1.pid, t1.name, t1.url, t1.permissions, t1.menu_type, t1.icon, t1.sort, t1.creator,
         t1.create_date, t1.updater, t1.update_date
         from sys_menu t1
@@ -20,7 +20,7 @@
         order by t1.sort asc
     </select>
 
-    <select id="listMenusByUserId" resultType="com.bee.modules.sys.entity.SysMenu">
+    <select id="listByUserId" resultType="com.bee.modules.sys.entity.SysMenu">
         select t3.id, t3.pid, t3.name, t3.url, t3.permissions, t3.menu_type, t3.icon, t3.sort, t3.creator,
         t3.create_date, t3.updater, t3.update_date
         from sys_role_user t1

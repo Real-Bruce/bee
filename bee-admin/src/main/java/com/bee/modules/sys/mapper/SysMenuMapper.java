@@ -4,7 +4,6 @@ import com.bee.common.mapper.BMapper;
 import com.bee.modules.sys.entity.SysMenu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -21,14 +20,14 @@ public interface SysMenuMapper extends BMapper<SysMenu> {
      * 获取菜单列表
      * @param menuType 菜单类型
      */
-    List<SysMenu> listMenus(@Param("menuType") Integer menuType);
+    List<SysMenu> listByMenuType(@Param("menuType") Integer menuType);
 
     /**
      * 获取菜单列表
      * @param userId 用户ID
      * @param menuType 菜单类型
      */
-    List<SysMenu> listMenusByUserId(@Param("userId") Long userId, @Param("menuType") Integer menuType);
+    List<SysMenu> listByUserId(@Param("userId") Long userId, @Param("menuType") Integer menuType);
 
     /**
      * 获取用户权限列表
