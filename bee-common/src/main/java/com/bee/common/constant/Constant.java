@@ -20,7 +20,7 @@ public interface Constant {
     /**
      * 资源根节点
      */
-    Long MENU_BOOT = 0L;
+    Long MENU_ROOT = 0L;
 
     /**
      * 部门根节点
