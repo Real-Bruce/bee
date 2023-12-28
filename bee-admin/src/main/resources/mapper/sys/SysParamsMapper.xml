@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bee.modules.sys.mapper.SysParamsMapper">
+
+    <select id="getValueByCode" resultType="java.lang.String">
+        select param_value from sys_params where param_code = #{paramCode}
+    </select>
+
+    <select id="listParamCodeByIds" resultType="java.lang.String">
+        select param_code from sys_params
+        where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <update id="updateValueByCode">
+        update sys_params set param_value = #{paramValue} where param_code = #{paramCode}
+    </update>
+</mapper>
