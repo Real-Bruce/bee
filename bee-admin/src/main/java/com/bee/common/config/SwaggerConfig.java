@@ -46,9 +46,10 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("bee")
-                .description("bee权限管理系统")
+                .description("小蜜蜂权限管理系统")
                 .termsOfServiceUrl("bee.realpluto.cn")
                 .version("0.0.1")
+                .contact("Bruce")
                 .build();
     }
 
