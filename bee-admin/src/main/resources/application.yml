@@ -42,7 +42,7 @@ spring:
 # bee 是否开启缓存
 bee:
   redis:
-    enable: false
+    enable: true
 
 # mybatis
 mybatis-plus:
