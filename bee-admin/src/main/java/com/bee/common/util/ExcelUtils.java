@@ -43,6 +43,10 @@ public abstract class ExcelUtils {
         EasyExcel.write(response.getOutputStream(), pojoClass).registerConverter(new LongStringConverter()).sheet(sheetName).doWrite(list);
     }
 
+    public static void exportExcelToTarget(HttpServletResponse response, String sheetName, List<?> sourceList, Class<?> targetClass) throws Exception {
+        exportExcelToTarget(response, null, sheetName, sourceList, targetClass);
+    }
+
     public static void exportExcelToTarget(HttpServletResponse response, String fileName, String sheetName, List<?> sourceList, Class<?> targetClass) throws Exception {
 
         List targetList = new ArrayList<>(sourceList.size());

@@ -58,7 +58,7 @@ public class SysLogOperationController {
     public void export(@ApiIgnore @RequestParam Map<String, Object> params, HttpServletResponse response) throws Exception {
         List<SysLogOperationDTO> list = sysLogOperationService.list(params);
 
-        ExcelUtils.exportExcelToTarget(response, null, "操作日志", list, SysLogOperationExcel.class);
+        ExcelUtils.exportExcelToTarget(response, "操作日志", list, SysLogOperationExcel.class);
     }
 
 }

@@ -56,7 +56,7 @@ public class SysLogErrorController {
     @RequiresPermissions("sys:log:error")
     public void export(@ApiIgnore @RequestParam Map<String, Object> params, HttpServletResponse response) throws Exception {
         List<SysLogErrorDTO> list = sysLogErrorService.list(params);
-        ExcelUtils.exportExcelToTarget(response, null, "异常日志", list, SysLogErrorExcel.class);
+        ExcelUtils.exportExcelToTarget(response, "异常日志", list, SysLogErrorExcel.class);
     }
 }
 
