@@ -1,7 +1,11 @@
 package com.bee.common.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.bee.modules.security.user.SecurityUser;
+import com.bee.modules.security.user.UserDetail;
 import org.apache.ibatis.reflection.MetaObject;
+
+import java.util.Date;
 
 /**
  * @author Bruce
@@ -22,11 +26,25 @@ public class FieldMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        // todo 待完善
+        UserDetail user = SecurityUser.getUser();
+        Date date = new Date();
+        // 创建人
+        strictInsertFill(metaObject, CREATOR, Long.class, user.getUserId());
+        // 创建时间
+        strictInsertFill(metaObject, CREATE_DATE, Date.class, date);
+        // 创建者所属部门
+        strictInsertFill(metaObject, DEPT_ID, Long.class, user.getDeptId());
+        // 更新者
+        strictInsertFill(metaObject, UPDATER, Long.class, user.getUserId());
+        // 更新时间
+        strictInsertFill(metaObject, UPDATE_DATE, Date.class, date);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        // todo 待完善
+        // 更新人
+        strictUpdateFill(metaObject, UPDATE_DATE, Date.class, new Date());
+        // 更新时间
+        strictUpdateFill(metaObject, UPDATER, Long.class, SecurityUser.getUserId());
     }
 }
