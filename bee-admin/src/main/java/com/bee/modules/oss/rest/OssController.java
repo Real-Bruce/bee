@@ -16,6 +16,7 @@ import com.bee.modules.oss.cloud.OssFactory;
 import com.bee.modules.oss.entity.Oss;
 import com.bee.modules.oss.service.OssService;
 import com.bee.modules.sys.service.SysParamsService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -38,6 +39,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sys/oss")
 @AllArgsConstructor
+@Api(tags = "oss管理")
 public class OssController {
     private final OssService ossService;
     private final SysParamsService paramsService;

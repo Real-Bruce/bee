@@ -20,6 +20,7 @@ import com.bee.modules.sys.dto.SysUserDTO;
 import com.bee.modules.sys.excel.SysUserExcel;
 import com.bee.modules.sys.service.SysRoleUserService;
 import com.bee.modules.sys.service.SysUserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -41,6 +42,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sys/user")
 @AllArgsConstructor
+@Api(tags = "用户管理")
 public class SysUserController {
     private final SysUserService sysUserService;
     private final SysRoleUserService sysRoleUserService;
