@@ -15,7 +15,7 @@ defineComponent({
   name: "HeaderMixNavMenus"
 })
 
-const store = useAppStore;
+const store = useAppStore();
 const router = useRouter();
 const route = useRoute();
 const routers = router.options.routes;

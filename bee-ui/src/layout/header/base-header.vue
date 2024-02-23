@@ -20,7 +20,7 @@ defineComponent({
   name: "Header"
 })
 
-const store = useAppStore;
+const store = useAppStore();
 const state = reactive({
   sidebarLayout: getThemeConfigCacheByKey(EThemeSetting.NavLayout)
 });

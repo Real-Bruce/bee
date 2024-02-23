@@ -99,7 +99,7 @@ export enum EMitt {
   /**
    * 刷新tab标签页
    */
-  OnSetReloadTabPage = "onSetReloadTabPage",
+  OnReloadTabPage = "onReloadTabPage",
   /**
    * 移动端打开侧边栏
    */
