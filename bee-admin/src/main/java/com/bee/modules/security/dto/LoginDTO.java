@@ -20,7 +20,7 @@ public class LoginDTO implements Serializable {
 
     @ApiModelProperty(value = "用户名")
     @NotBlank(message = "{sysuser.username.require}")
-    private String userName;
+    private String username;
 
     @ApiModelProperty(value = "密码")
     @NotBlank(message = "{sysuser.password.require}")

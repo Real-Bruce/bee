@@ -57,7 +57,7 @@ public class LoginController {
 
     @PostMapping("/login")
     @ApiOperation(value = "登录")
-    public ResultVO login(HttpServletRequest request, @RequestParam LoginDTO loginDTO) {
+    public ResultVO login(HttpServletRequest request, @RequestBody LoginDTO loginDTO) {
 
         // 校验验证码
         ValidatorUtils.validateEntity(loginDTO);
@@ -74,11 +74,11 @@ public class LoginController {
         log.setIp(IPUtils.getIpAddr(request));
         log.setUserAgent(request.getHeader(HttpHeaders.USER_AGENT));
 
-        SysUserDTO userDTO = sysUserService.getByUsername(loginDTO.getUserName());
+        SysUserDTO userDTO = sysUserService.getByUsername(loginDTO.getUsername());
         // 用户存在校验
         if (Objects.isNull(userDTO)) {
             log.setStatus(LoginStatusEnum.FAIL.getCode());
-            log.setCreatorName(loginDTO.getUserName());
+            log.setCreatorName(loginDTO.getUsername());
             sysLogLoginService.save(log);
 
             throw new BeeException(ErrorCode.ACCOUNT_PASSWORD_ERROR);
