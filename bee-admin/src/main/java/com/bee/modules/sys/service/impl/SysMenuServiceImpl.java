@@ -76,7 +76,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuMapper, SysMenu> 
         List<SysMenu> menuList;
 
         // 系统管理员最高权限
-        if (SuperAdminEnum.YES.getValue() == user.getSupperAdmin()) {
+        if (SuperAdminEnum.YES.getValue() == user.getSuperAdmin()) {
             menuList = baseMapper.listByMenuType(menuType);
         } else {
             menuList = baseMapper.listByUserId(user.getUserId(), menuType);

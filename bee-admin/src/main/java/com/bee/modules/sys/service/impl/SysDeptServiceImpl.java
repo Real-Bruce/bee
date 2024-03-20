@@ -37,7 +37,7 @@ public class SysDeptServiceImpl extends BaseServiceImpl<SysDeptMapper, SysDept> 
     public List<SysDeptDTO> list(Map<String, Object> params) {
         UserDetail user = SecurityUser.getUser();
         // 普通管理员，仅能查询所属部门及子部门数据
-        if (SuperAdminEnum.NO.getValue() == user.getSupperAdmin()) {
+        if (SuperAdminEnum.NO.getValue() == user.getSuperAdmin()) {
             params.put("deptIds", listSubDeptIdsById(user.getDeptId()));
         }
 

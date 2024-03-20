@@ -126,7 +126,7 @@ public class LoginController {
         log.setIp(IPUtils.getIpAddr(request));
         log.setStatus(LoginStatusEnum.SUCCESS.getCode());
         log.setCreator(user.getUserId());
-        log.setCreatorName(user.getUserName());
+        log.setCreatorName(user.getUsername());
         log.setCreateDate(new Date());
         sysLogLoginService.save(log);
 

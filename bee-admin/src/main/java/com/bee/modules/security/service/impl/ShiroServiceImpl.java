@@ -36,7 +36,7 @@ public class ShiroServiceImpl implements ShiroService {
     public Set<String> getUserPermissions(UserDetail userDetail) {
         // system admin top permission
         List<String> permissionsList;
-        if (SuperAdminEnum.YES.getValue() == userDetail.getSupperAdmin()) {
+        if (SuperAdminEnum.YES.getValue() == userDetail.getSuperAdmin()) {
             permissionsList = sysMenuMapper.listPermissions();
         } else {
             permissionsList = sysMenuMapper.listUserPermissions(userDetail.getUserId());

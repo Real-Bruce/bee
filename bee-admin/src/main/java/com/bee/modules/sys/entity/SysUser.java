@@ -112,7 +112,7 @@ public class SysUser implements Serializable {
     * 性别   0：男   1：女    2：保密
     */
     @TableField("gender")
-    private Object gender;
+    private Integer gender;
     /**
     * 邮箱
     */
@@ -132,7 +132,7 @@ public class SysUser implements Serializable {
     * 超级管理员   0：否   1：是
     */
     @TableField("super_admin")
-    private Object superAdmin;
+    private Integer superAdmin;
     /**
     * 状态  0：停用   1：正常
     */

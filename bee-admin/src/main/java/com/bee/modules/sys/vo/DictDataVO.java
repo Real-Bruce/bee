@@ -1,7 +1,7 @@
 package com.bee.modules.sys.vo;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 /**
@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class DictDataVO {
 
-    @JsonSerialize(using = StringSerializer.class)
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long dictTypeId;
 
     private String dictLabel;

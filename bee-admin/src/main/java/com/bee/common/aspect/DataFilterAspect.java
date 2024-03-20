@@ -42,7 +42,7 @@ public class DataFilterAspect {
             UserDetail user = SecurityUser.getUser();
 
             // super admin not do filter
-            if (SuperAdminEnum.YES.getValue() == user.getSupperAdmin()) {
+            if (SuperAdminEnum.YES.getValue() == user.getSuperAdmin()) {
                 return;
             }
 

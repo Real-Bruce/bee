@@ -22,7 +22,7 @@ public class UserDetail implements Serializable {
     /**
      * 用户名称
      */
-    private String userName;
+    private String username;
     /**
      * headUrl
      */
@@ -54,7 +54,7 @@ public class UserDetail implements Serializable {
     /**
      * 是否admin用户
      */
-    private Integer supperAdmin;
+    private Integer superAdmin;
     /**
      * 部门权限
      */

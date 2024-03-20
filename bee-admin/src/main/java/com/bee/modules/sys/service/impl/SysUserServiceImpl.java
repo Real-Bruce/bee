@@ -44,7 +44,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper, SysUser> 
 
         // 普通管理员仅查询所属部门及子部门
         UserDetail user = SecurityUser.getUser();
-        if (SuperAdminEnum.NO.getValue() == user.getSupperAdmin()) {
+        if (SuperAdminEnum.NO.getValue() == user.getSuperAdmin()) {
             params.put("deptIdList", sysDeptService.listSubDeptIdsById(user.getDeptId()));
         }
 
@@ -55,7 +55,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper, SysUser> 
     @Override
     public List<SysUserDTO> list(Map<String, Object> params) {
         UserDetail user = SecurityUser.getUser();
-        if (SuperAdminEnum.NO.getValue() == user.getSupperAdmin()) {
+        if (SuperAdminEnum.NO.getValue() == user.getSuperAdmin()) {
             params.put("deptIds", sysDeptService.listSubDeptIdsById(user.getDeptId()));
         }
 

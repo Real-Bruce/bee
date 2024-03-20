@@ -101,7 +101,7 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRole> 
 
         //普通管理员，只能查询所属部门及子部门的数据
         UserDetail user = SecurityUser.getUser();
-        if (user.getSupperAdmin() == SuperAdminEnum.NO.getValue()) {
+        if (user.getSuperAdmin() == SuperAdminEnum.NO.getValue()) {
             List<Long> deptIdList = sysDeptService.listSubDeptIdsById(user.getDeptId());
             wrapper.in(deptIdList != null, "dept_id", deptIdList);
         }

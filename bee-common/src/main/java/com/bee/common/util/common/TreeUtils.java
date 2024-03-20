@@ -46,7 +46,7 @@ public abstract class TreeUtils {
         List<T> result = new ArrayList<>();
 
         // list => map
-        LinkedHashMap<Long, T> nodeMap = treeNodes.stream().collect(Collectors.toMap(T::getPid, Function.identity(), (existing, replacement) -> existing, LinkedHashMap::new));
+        LinkedHashMap<Long, T> nodeMap = treeNodes.stream().collect(Collectors.toMap(T::getId, Function.identity(), (existing, replacement) -> existing, LinkedHashMap::new));
 
         for (T node : nodeMap.values()) {
             T parent = nodeMap.get(node.getPid());
