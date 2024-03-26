@@ -39,7 +39,7 @@ public abstract class TreeUtils {
                 treeNode.getChildren().add(findChildren(treeNodes, treeNode));
             }
         }
-        return null;
+        return rootNode;
     }
 
     public static <T extends TreeNode> List<T> build(List<T> treeNodes) {

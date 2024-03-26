@@ -81,7 +81,7 @@ public class SysDept implements Serializable {
     * 排序
     */
     @TableField("sort")
-    private Object sort;
+    private Integer sort;
     /**
     * 创建者
     */

@@ -86,7 +86,7 @@ public class DictTypeServiceImpl extends BaseServiceImpl<DictTypeMapper, DictTyp
         for (DictTypeVO dictType : dictTypeList) {
             for (DictDataVO dictData : dictDataList) {
                 if (dictType.getId().equals(dictData.getDictTypeId())) {
-                    dictType.getDictDataVOList().add(dictData);
+                    dictType.getDataList().add(dictData);
                 }
             }
         }

@@ -78,7 +78,7 @@ public class SysParams implements Serializable {
     * 类型   0：系统参数   1：非系统参数
     */
     @TableField("param_type")
-    private Object paramType;
+    private Integer paramType;
     /**
     * 备注
     */

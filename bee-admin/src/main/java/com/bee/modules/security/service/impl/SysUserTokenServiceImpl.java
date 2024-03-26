@@ -22,9 +22,9 @@ import java.util.Objects;
 public class SysUserTokenServiceImpl extends BaseServiceImpl<SysUserTokenMapper, SysUserToken> implements SysUserTokenService {
 
     /**
-     * 默认2小时过期
+     * 默认1小时过期
      */
-    private final static int EXPIRE_TIME = 60 * 60 * 2;
+    private final static int EXPIRE_TIME = 1000 * 60 * 60 * 1;
     private final SysUserTokenMapper sysUserTokenMapper;
 
     public SysUserTokenServiceImpl(SysUserTokenMapper sysUserTokenMapper) {

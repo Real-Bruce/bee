@@ -19,5 +19,5 @@ public class DictTypeVO {
 
     private String dictType;
 
-    private List<DictDataVO> dictDataVOList = new ArrayList<>();
+    private List<DictDataVO> dataList = new ArrayList<>();
 }

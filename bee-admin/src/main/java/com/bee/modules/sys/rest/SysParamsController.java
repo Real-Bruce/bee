@@ -48,7 +48,7 @@ public class SysParamsController {
             @ApiImplicitParam(name = Constant.ORDER, value = "排序方式，可选值(asc、desc)", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "paramCode", value = "参数编码", paramType = "query", dataType = "String")
     })
-    public ResultVO<PageData<SysParamsDTO>> page(@ApiIgnore @RequestBody Map<String, Object> params){
+    public ResultVO<PageData<SysParamsDTO>> page(@ApiIgnore @RequestParam Map<String, Object> params){
         PageData<SysParamsDTO> page = sysParamsService.page(params);
         return new ResultVO<PageData<SysParamsDTO>>().ok(page);
     }
