@@ -65,10 +65,10 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRole> 
         SysRole sysRole = ConvertUtils.sourceToTarget(dto, SysRole.class);
         if (Objects.isNull(dto.getId())) {
             // 保存角色信息
-            updateById(sysRole);
+            insert(sysRole);
         } else {
             // 更新角色信息
-            insert(sysRole);
+            updateById(sysRole);
         }
 
         // 保存/更新角色菜单关系
