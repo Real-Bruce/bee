@@ -7,6 +7,7 @@ import com.bee.common.util.TreeNode;
 import com.bee.common.util.validator.group.AddGroup;
 import com.bee.common.util.validator.group.DefaultGroup;
 import com.bee.common.util.validator.group.UpdateGroup;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.math3.analysis.function.Add;
@@ -21,6 +22,7 @@ import javax.validation.constraints.Null;
  * @desc SysMenuDTO
  */
 @ApiModel("SysMenuDTO")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SysMenuDTO extends TreeNode<SysMenuDTO> implements Serializable {
     private static final long serialVersionUID = -39666369258216352L;
 

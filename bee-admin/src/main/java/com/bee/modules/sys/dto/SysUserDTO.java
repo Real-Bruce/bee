@@ -3,6 +3,7 @@ package com.bee.modules.sys.dto;
 import com.bee.common.util.validator.group.AddGroup;
 import com.bee.common.util.validator.group.DefaultGroup;
 import com.bee.common.util.validator.group.UpdateGroup;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @Data
 @ApiModel("用户管理")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SysUserDTO implements Serializable {
 
     private static final long serialVersionUID = 1662095773498628802L;

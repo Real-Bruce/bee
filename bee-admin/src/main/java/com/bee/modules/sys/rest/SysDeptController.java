@@ -6,6 +6,7 @@ import com.bee.common.util.validator.AssertUtils;
 import com.bee.common.util.validator.ValidatorUtils;
 import com.bee.common.util.validator.group.AddGroup;
 import com.bee.common.util.validator.group.DefaultGroup;
+import com.bee.common.util.validator.group.UpdateGroup;
 import com.bee.modules.sys.dto.SysDeptDTO;
 import com.bee.modules.sys.dto.SysUserDTO;
 import com.bee.modules.sys.entity.SysDept;
@@ -47,7 +48,7 @@ public class SysDeptController {
         SysDeptDTO deptDTO = sysDeptService.getById(id);
         return new ResultVO<SysDeptDTO>().ok(deptDTO);
     }
-    @PostMapping("/save")
+    @PostMapping()
     @ApiOperation("保存数据")
     @LogOperation("保存数据")
     @RequiresPermissions("sys:dept:save")
@@ -57,12 +58,12 @@ public class SysDeptController {
         return new ResultVO();
     }
 
-    @PutMapping("/update")
+    @PutMapping()
     @ApiOperation("修改数据")
     @LogOperation("修改数据")
     @RequiresPermissions("sys:dept:update")
     public ResultVO update(@RequestBody SysDeptDTO dto) {
-        ValidatorUtils.validateEntity(dto, AddGroup.class, DefaultGroup.class);
+        ValidatorUtils.validateEntity(dto, UpdateGroup.class, DefaultGroup.class);
         sysDeptService.update(dto);
         return new ResultVO();
     }
