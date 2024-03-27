@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.bee.common.entity.BaseEntity;
 import lombok.*;
 
 /**
@@ -18,7 +19,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @TableName(value = "sys_params")
-public class SysParams implements Serializable {
+public class SysParams extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 231012303849603233L;
     
     /**
@@ -41,22 +42,6 @@ public class SysParams implements Serializable {
     * 备注
     */
     public static final String REMARK = "REMARK";
-    /**
-    * 创建者
-    */
-    public static final String CREATOR = "CREATOR";
-    /**
-    * 创建时间
-    */
-    public static final String CREATE_DATE = "CREATE_DATE";
-    /**
-    * 更新者
-    */
-    public static final String UPDATER = "UPDATER";
-    /**
-    * 更新时间
-    */
-    public static final String UPDATE_DATE = "UPDATE_DATE";
 
     /**
     * id
@@ -84,26 +69,6 @@ public class SysParams implements Serializable {
     */
     @TableField("remark")
     private String remark;
-    /**
-    * 创建者
-    */
-    @TableField("creator")
-    private Long creator;
-    /**
-    * 创建时间
-    */
-    @TableField("create_date")
-    private Date createDate;
-    /**
-    * 更新者
-    */
-    @TableField("updater")
-    private Long updater;
-    /**
-    * 更新时间
-    */
-    @TableField("update_date")
-    private Date updateDate;
 
 }
 

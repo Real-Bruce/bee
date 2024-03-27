@@ -79,7 +79,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuMapper, SysMenu> 
         if (SuperAdminEnum.YES.getValue() == user.getSuperAdmin()) {
             menuList = baseMapper.listByMenuType(menuType);
         } else {
-            menuList = baseMapper.listByUserId(user.getUserId(), menuType);
+            menuList = baseMapper.listByUserId(user.getId(), menuType);
         }
 
         List<SysMenuDTO> menuDTOS = ConvertUtils.sourceToTarget(menuList, SysMenuDTO.class);

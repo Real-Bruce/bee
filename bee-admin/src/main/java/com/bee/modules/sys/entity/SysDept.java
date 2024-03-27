@@ -4,6 +4,7 @@ import java.util.Date;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.bee.common.entity.BaseEntity;
 import lombok.*;
 
 /**
@@ -16,7 +17,7 @@ import lombok.*;
 @Data
 @EqualsAndHashCode(callSuper=false)
 @TableName(value = "sys_dept")
-public class SysDept implements Serializable {
+public class SysDept extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 410985401544669070L;
     
     /**
@@ -39,22 +40,6 @@ public class SysDept implements Serializable {
     * 排序
     */
     public static final String SORT = "SORT";
-    /**
-    * 创建者
-    */
-    public static final String CREATOR = "CREATOR";
-    /**
-    * 创建时间
-    */
-    public static final String CREATE_DATE = "CREATE_DATE";
-    /**
-    * 更新者
-    */
-    public static final String UPDATER = "UPDATER";
-    /**
-    * 更新时间
-    */
-    public static final String UPDATE_DATE = "UPDATE_DATE";
 
     /**
     * id
@@ -82,26 +67,6 @@ public class SysDept implements Serializable {
     */
     @TableField("sort")
     private Integer sort;
-    /**
-    * 创建者
-    */
-    @TableField("creator")
-    private Long creator;
-    /**
-    * 创建时间
-    */
-    @TableField("create_date")
-    private Date createDate;
-    /**
-    * 更新者
-    */
-    @TableField(value = "updater", fill = FieldFill.INSERT_UPDATE)
-    private Long updater;
-    /**
-    * 更新时间
-    */
-    @TableField(value = "update_date", fill = FieldFill.INSERT_UPDATE)
-    private Date updateDate;
     /**
      * 上级部门名称
      */

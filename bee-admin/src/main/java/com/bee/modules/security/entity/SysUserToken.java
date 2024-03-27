@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.bee.common.entity.BaseEntity;
 import lombok.*;
 
 /**
@@ -18,7 +19,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @TableName(value = "sys_user_token")
-public class SysUserToken implements Serializable {
+public class SysUserToken extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 943255744507173589L;
     
     /**
@@ -37,14 +38,6 @@ public class SysUserToken implements Serializable {
     * 过期时间
     */
     public static final String EXPIRE_DATE = "EXPIRE_DATE";
-    /**
-    * 更新时间
-    */
-    public static final String UPDATE_DATE = "UPDATE_DATE";
-    /**
-    * 创建时间
-    */
-    public static final String CREATE_DATE = "CREATE_DATE";
 
     /**
     * id
@@ -67,16 +60,5 @@ public class SysUserToken implements Serializable {
     */
     @TableField("expire_date")
     private Date expireDate;
-    /**
-    * 更新时间
-    */
-    @TableField("update_date")
-    private Date updateDate;
-    /**
-    * 创建时间
-    */
-    @TableField("create_date")
-    private Date createDate;
-
 }
 

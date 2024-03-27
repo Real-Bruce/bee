@@ -39,7 +39,7 @@ public class ShiroServiceImpl implements ShiroService {
         if (SuperAdminEnum.YES.getValue() == userDetail.getSuperAdmin()) {
             permissionsList = sysMenuMapper.listPermissions();
         } else {
-            permissionsList = sysMenuMapper.listUserPermissions(userDetail.getUserId());
+            permissionsList = sysMenuMapper.listUserPermissions(userDetail.getId());
         }
 
         // normal user permission

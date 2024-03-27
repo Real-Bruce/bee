@@ -41,7 +41,7 @@ public class SecurityUser {
      * 获取用户ID
      */
     public static Long getUserId() {
-        return getUser().getUserId();
+        return getUser().getId();
     }
 
     /**

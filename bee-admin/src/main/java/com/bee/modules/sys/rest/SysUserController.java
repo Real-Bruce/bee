@@ -97,7 +97,7 @@ public class SysUserController {
             return new ResultVO().error(ErrorCode.PASSWORD_ERROR);
         }
 
-        sysUserService.updatePassword(user.getUserId(), dto.getNewPassword());
+        sysUserService.updatePassword(user.getId(), dto.getNewPassword());
         return new ResultVO();
     }
 

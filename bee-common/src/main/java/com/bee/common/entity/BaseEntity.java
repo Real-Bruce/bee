@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * @author Bruce
  * @create 2023/11/17
- * @description
+ * @description 通用entity
  */
 @Data
 public class BaseEntity implements Serializable {
@@ -19,10 +19,21 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 5634536428309478754L;
 
     /**
-     * Id
+     * 创建者
      */
-    @TableId
-    private Long id;
+    public static final String CREATOR = "CREATOR";
+    /**
+     * 创建时间
+     */
+    public static final String CREATE_DATE = "CREATE_DATE";
+    /**
+     * 更新者
+     */
+    public static final String UPDATER = "UPDATER";
+    /**
+     * 更新时间
+     */
+    public static final String UPDATE_DATE = "UPDATE_DATE";
 
     /**
      * 创建人
@@ -35,4 +46,15 @@ public class BaseEntity implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT)
     private Date createDate;
+
+    /**
+     * 更新者
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updater;
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateDate;
 }

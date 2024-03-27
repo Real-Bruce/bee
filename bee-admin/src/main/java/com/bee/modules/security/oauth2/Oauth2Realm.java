@@ -73,7 +73,7 @@ public class Oauth2Realm extends AuthorizingRealm {
         UserDetail userDetail = ConvertUtils.sourceToTarget(user, UserDetail.class);
 
         // 获取用户对应的部门数据权限
-        List<Long> dataScopeList = shiroService.getDataScopeList(userDetail.getUserId());
+        List<Long> dataScopeList = shiroService.getDataScopeList(userDetail.getId());
 
         // 账号锁定
         if (userDetail.getStatus() == 0) {

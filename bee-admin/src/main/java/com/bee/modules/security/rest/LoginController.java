@@ -118,14 +118,14 @@ public class LoginController {
     public ResultVO logout(HttpServletRequest request) {
         UserDetail user = SecurityUser.getUser();
 
-        sysUserTokenService.logout(user.getUserId());
+        sysUserTokenService.logout(user.getId());
 
         // 记录日志
         SysLogLogin log = new SysLogLogin();
         log.setOperation(LoginOperationEnum.LOGOUT.getValue());
         log.setIp(IPUtils.getIpAddr(request));
         log.setStatus(LoginStatusEnum.SUCCESS.getCode());
-        log.setCreator(user.getUserId());
+        log.setCreator(user.getId());
         log.setCreatorName(user.getUsername());
         log.setCreateDate(new Date());
         sysLogLoginService.save(log);

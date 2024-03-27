@@ -85,7 +85,7 @@ public class DataFilterAspect {
         if (CollUtil.isNotEmpty(deptIdList)) {
             sqlFilter.append(" or ");
         }
-        sqlFilter.append(tableAlias).append(dataFilter.userId()).append("=").append(user.getUserId());
+        sqlFilter.append(tableAlias).append(dataFilter.userId()).append("=").append(user.getId());
         sqlFilter.append(")");
 
         return sqlFilter.toString();
