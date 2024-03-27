@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.bee.common.entity.BaseEntity;
 import lombok.*;
 
 /**
@@ -17,7 +18,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @TableName(value = "sys_log_error")
-public class SysLogError implements Serializable {
+public class SysLogError extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 811772866499001126L;
     
     /**
@@ -48,14 +49,6 @@ public class SysLogError implements Serializable {
     * 异常信息
     */
     public static final String ERROR_INFO = "ERROR_INFO";
-    /**
-    * 创建者
-    */
-    public static final String CREATOR = "CREATOR";
-    /**
-    * 创建时间
-    */
-    public static final String CREATE_DATE = "CREATE_DATE";
 
     /**
     * id
@@ -93,16 +86,6 @@ public class SysLogError implements Serializable {
     */
     @TableField("error_info")
     private String errorInfo;
-    /**
-    * 创建者
-    */
-    @TableField("creator")
-    private Long creator;
-    /**
-    * 创建时间
-    */
-    @TableField("create_date")
-    private Date createDate;
 
 }
 
