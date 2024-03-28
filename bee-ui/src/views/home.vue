@@ -3,7 +3,7 @@
 <template>
   <el-card shadow="never" class="aui-card--fill">
     <div class="mod-home">
-      <h3>小蜜蜂权限管理系统</h3>
+      <h3>bee-security</h3>
     </div>
   </el-card>
 </template>

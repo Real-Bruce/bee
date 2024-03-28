@@ -67,11 +67,11 @@ function onLogin() {
             }
           })
           .catch(() => {
-            state.loading = true;
+            state.loading = false;
             onRefreshCode();
-          })
+          });
     }
-  })
+  });
 }
 
 </script>
@@ -80,13 +80,13 @@ function onLogin() {
   <div class="bee-login">
     <div class="bee-login-wrap">
       <div class="bee-login-left hidden-sm-and-down">
-        <p class="bee-login-left-title">小蜜蜂权限管理系统</p>
+        <p class="bee-login-left-title">BEE-SECURITY</p>
       </div>
 
       <div class="bee-login-right">
         <div class="bee-login-right-main">
           <h4 class="bee-login-right-main-title">登录</h4>
-          <el-form ref="formRef" label-width="80px" :status-icon="true" :mode="login" :rules="rules" @keyup.enter="login">
+          <el-form ref="formRef" label-width="80px" :status-icon="true" :model="login" :rules="rules" @keyup.enter="login">
             <el-form-item label-width="0" prop="username">
               <el-input v-model="login.username" placeholder="用户名" prefix-icon="user" autocomplete="off"/>
             </el-form-item>
@@ -94,13 +94,13 @@ function onLogin() {
               <el-input placeholder="密码" v-model="login.password" prefix-icon="lock" autocomplete="off" show-password/>
             </el-form-item>
             <el-form-item label-width="0" prop="captcha">
-              <el-space class="bee-login-right-mian-code">
-                <el-input v-model="login.captcha" placeholder="验证码" prefix-icon="first-aid-kit"/>
-                <image style="vertical-align: middle; height: 40px; cursor: pointer;" :src="state.captchaUrl" @click="onRefreshCode" alt=""/>
+              <el-space class="bee-login-right-main-code">
+                <el-input v-model="login.captcha" placeholder="验证码" prefix-icon="first-aid-kit"></el-input>
+                <img style="vertical-align: middle; height: 40px; cursor: pointer" :src="state.captchaUrl" @click="onRefreshCode" alt="" />
               </el-space>
             </el-form-item>
             <el-form-item label-width="0">
-              <el-button class="bee-login-right-main-btn" type="primary" size="small" :disabled="state.loading" @click="onLogin" />
+              <el-button class="bee-login-right-main-btn" type="primary" size="small" :disabled="state.loading" @click="onLogin">登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -126,10 +126,10 @@ function onLogin() {
   justify-content: center;
 
   @media only screen and (max-width: 992px) {
-    .rr-login-wrap {
+    .bee-login-wrap {
       width: 96% !important;
     }
-    .rr-login-right {
+    .bee-login-right {
       width: 100% !important;
     }
   }

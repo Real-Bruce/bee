@@ -11,13 +11,14 @@ declare module "*.jpeg";
 declare module "*.gif";
 declare module "*.bmp";
 declare module "*.tiff";
+declare module "*.gif";
 
-declare module "*.less"
+declare module "*.less";
 
 declare global {
   interface ImportMeta {
     env: Record<string, unknown>;
-    globEager<T = unknown> (globPath: string) : Record<string, T>;
+    globEager<T = unknown>(globPath: string): Record<string, T>;
   }
 }
 

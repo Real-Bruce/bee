@@ -1,9 +1,9 @@
 import vue from "@vitejs/plugin-vue";
-import {resolve} from "path"
-import {defineConfig, loadEnv, UserConfig, UserConfigExport} from "vite";
+import { resolve } from "path";
+import { defineConfig, loadEnv, UserConfig, UserConfigExport } from "vite";
 import html from "vite-plugin-html";
 import tsconfigPaths from "vite-tsconfig-paths";
-import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 export default (config: UserConfig): UserConfigExport => {
   const mode = config.mode as string;
@@ -22,7 +22,7 @@ export default (config: UserConfig): UserConfigExport => {
       }),
       tsconfigPaths(),
       createSvgIconsPlugin({
-        iconDirs: [resolve(__dirname), "src/assets/icon/svg"],
+        iconDirs: [resolve(__dirname, "src/assets/icons/svg")],
         symbolId: "icon-[dir]-[name]"
       })
     ],
@@ -58,5 +58,5 @@ export default (config: UserConfig): UserConfigExport => {
       https: false,
       hmr: {overlay: false}
     }
-  })
-}
+  });
+};

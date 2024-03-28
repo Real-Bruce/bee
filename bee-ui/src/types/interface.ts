@@ -13,7 +13,7 @@ export interface IHttpResponse {
 }
 
 /**
- * 菜单部分
+ * 菜单
  */
 export interface IServerMenus {
   createDate: string;
@@ -28,7 +28,7 @@ export interface IServerMenus {
   url: string;
   openStyle: number;
   redirect?: string;
-  children?: IServerMenus[]
+  children?: IServerMenus[];
 }
 
 export interface ICacheOptions {
@@ -37,22 +37,23 @@ export interface ICacheOptions {
    */
   isDelete?: boolean;
   /**
-   * 是否采用JSON格式缓存
+   * 是否采用JSON格式化缓存值
    */
   isParse?: boolean;
   /**
-   * 是否采用会话缓存
+   * 是否采用会话缓存介质
    */
   isSessionStorage?: boolean;
 }
 
 export interface IViewHooksOptions {
+  //  设置属性
   /**
-   * 当前页面是否在创建时，调用查询数据接口
+   * 此页面是否在创建时，调用查询数据列表接口？
    */
-  createIsNeed?: boolean;
+  createdIsNeed?: boolean;
   /**
-   * 当前页面是否在激活（进入）时，调用查询数据列表接口
+   * 此页面是否在激活（进入）时，调用查询数据列表接口？
    */
   activatedIsNeed?: boolean;
   /**
@@ -60,23 +61,23 @@ export interface IViewHooksOptions {
    */
   getDataListURL?: string;
   /**
-   * 数据列表，是否需要分页？
+   * 数据列表接口，是否需要分页？
    */
   getDataListIsPage?: boolean;
   /**
    * 删除接口，API地址
    */
-  deleteURL?: ""
+  deleteURL?: "";
   /**
-   * 删除接口，是否批量删除
+   * 删除接口，是否需要批量？
    */
   deleteIsBatch?: boolean;
   /**
-   * 删除接口，批量状态下比较操作的key，如：uid，pid...
+   * 删除接口，批量状态下由那个key进行标记操作？比如：pid，uid...
    */
-  deleteIsBatchKey?: boolean;
+  deleteIsBatchKey?: string;
   /**
-   * 导出接口，api地址
+   * 导出接口，API地址
    */
   exportURL?: string;
 
@@ -89,11 +90,11 @@ export interface IViewHooksOptions {
    */
   dataList?: IObject[];
   /**
-   * 排序，asc/desc
+   * 排序，asc／desc
    */
   order?: string;
   /**
-   * 排序字段
+   * 排序，字段
    */
   orderField?: string;
   /**
@@ -101,7 +102,7 @@ export interface IViewHooksOptions {
    */
   page?: number;
   /**
-   * 每页数量
+   * 每页数
    */
   limit?: number;
   /**
@@ -109,7 +110,7 @@ export interface IViewHooksOptions {
    */
   total?: number;
   /**
-   * 数据列表，加载状态
+   * 数据列表，loading状态
    */
   dataListLoading?: boolean;
   /**
@@ -122,13 +123,10 @@ export interface IViewHooksOptions {
 export interface IViewHooks extends IViewHooksOptions, IObject {
   /**
    * 检查权限
-   * @param key
    */
   hasPermission: (key: string) => boolean;
   /**
    * 获取字典名称
-   * @param dictType
-   * @param dictValue
    */
   getDictLabel: (dictType: string, dictValue: number) => string | number;
   /**
@@ -137,49 +135,42 @@ export interface IViewHooks extends IViewHooksOptions, IObject {
   query: () => void;
   /**
    * 列表多选事件
-   * @param list
    */
   dataListSelectionChangeHandle: (list: IObject[]) => void;
   /**
    * 列表排序事件
-   * @param sort
    */
   dataListSortChangeHandle: (sort: IObject) => void;
   /**
    * 列表切换每页显示数量事件
-   * @param pageSize
    */
   pageSizeChangeHandle: (pageSize: number) => void;
   /**
    * 列表分页事件
-   * @param pageIndex
    */
-  pageCurrentChangeHandle:(pageIndex: number) => void;
+  pageCurrentChangeHandle: (pageIndex: number) => void;
   /**
    * 列表搜索事件
    */
   getDataList: () => void;
   /**
    * 列表删除事件
-   * @param id
    */
-  deleteHandle: (id?: string) => Promise<any>
+  deleteHandle: (id?: string) => Promise<any>;
   /**
    * 列表导出事件
    */
   exportHandle: () => void;
   /**
-   * 关闭当前Tab事件
+   * 关闭当前tab页
    */
   closeCurrentTab: () => void;
   /**
    * 处理流程
-   * @param e
    */
   handleFlowRoute: (e: IObject) => void;
   /**
    * 查看流程详情
-   * @param e
    */
   flowDetailRoute: (e: IObject) => void;
 }

@@ -11,10 +11,10 @@ import type { App, Plugin } from "vue";
 export const getValueByKeys = (record: IObject = {}, key: string, defaultValue?: unknown): any => {
   const keys = key.split(".");
   for (let i = 0; i < keys.length; i++) {
-    record = record[key[i]] || (i === key.length - 1 ? defaultValue : {});
+    record = record[keys[i]] || (i === keys.length - 1 ? defaultValue : {});
   }
   return record || defaultValue;
-}
+};
 
 /**
  * 数组转对象
