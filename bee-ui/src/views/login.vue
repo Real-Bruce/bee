@@ -2,21 +2,20 @@
 
 import {defineComponent, onMounted, reactive, ref} from "vue";
 import {useAppStore} from "@/store";
-import {useRoute} from "vue-router";
+import {useRouter} from "vue-router";
 import {getUuid} from "@/utils/common";
 import app from "@/constants/app";
 import baseService from "@/service/baseService";
 import {setCache} from "@/utils/cache";
 import {CacheToken} from "@/constants/cacheKey";
 import {ElMessage} from "element-plus";
-import router from "@/router";
 
 defineComponent({
   name:"login"
 })
 
 const store = useAppStore();
-const stouter = useRoute();
+const router = useRouter();
 const formRef = ref();
 
 const state = reactive({
