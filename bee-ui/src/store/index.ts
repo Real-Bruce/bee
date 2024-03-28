@@ -62,7 +62,7 @@ export const useAppStore = defineStore("useAppStore", {
         // 加载菜单
         baseService.get("/sys/menu/nav"),
         // 加载权限
-        baseService.get("/sys/menu/permission"),
+        baseService.get("/sys/menu/permissions"),
         // 加载用户信息
         baseService.get("/sys/user/info"),
         // 加载字典

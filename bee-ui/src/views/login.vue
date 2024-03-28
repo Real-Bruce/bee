@@ -25,9 +25,9 @@ const state = reactive({
 })
 
 const rules = ref({
-  username: [{ require: true, message: "用户名不能为空！", trigger: "blur"}],
-  password: [{ require: true, message: "密码不能为空！", trigger: "blur"}],
-  captcha: [{ require: true, message: "验证码不能为空！", trigger: "blur"}],
+  username: [{ required: true, message: "用户名不能为空！", trigger: "blur"}],
+  password: [{ required: true, message: "密码不能为空！", trigger: "blur"}],
+  captcha: [{ required: true, message: "验证码不能为空！", trigger: "blur"}],
 })
 
 const login = reactive({
@@ -86,7 +86,7 @@ function onLogin() {
       <div class="bee-login-right">
         <div class="bee-login-right-main">
           <h4 class="bee-login-right-main-title">登录</h4>
-          <el-form ref="formRef" label-width="80px" :status-icon="true" :model="login" :rules="rules" @keyup.enter="login">
+          <el-form ref="formRef" label-width="80px" :status-icon="true" :model="login" :rules="rules" @keyup.enter="onLogin">
             <el-form-item label-width="0" prop="username">
               <el-input v-model="login.username" placeholder="用户名" prefix-icon="user" autocomplete="off"/>
             </el-form-item>
